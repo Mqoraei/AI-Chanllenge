@@ -1,0 +1,15 @@
+# Simple Kubernetes Job for the cluster group client.
+# Update hosts in main.py, build the image, then apply this file.
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: cluster-group-client
+spec:
+  backoffLimit: 1
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: cluster-group-client
+          image: cluster-group-client:latest
+          imagePullPolicy: IfNotPresent
